@@ -1,0 +1,41 @@
+#footer_txt
+{
+	text-align:center;
+	
+	color:#C0C0C0 !important;
+	font-size:90%;
+}
+#bienv_home
+{
+	margin-top:50%;
+	font-size:100%;
+}
+#text_sup
+{
+	font-size:55% !important;
+}
+#text_supIz
+{
+	font-size:87% !important;
+	float:left !important;
+}
+.input_form
+{
+	height:60px;
+	color:#8E878F;
+	
+}
+.bottom_coment
+{
+	/*background-color: #8E878F;*/
+	color:white;
+	font-weight:bold;
+  border-radius: 6px;
+  height: 60px;
+  width: 100%;
+}
+
+.div_static
+{
+	width:170px !important;
+}
