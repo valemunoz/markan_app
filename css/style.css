@@ -12,11 +12,11 @@
 }
 #text_sup
 {
-	font-size:55% !important;
+	font-size:65% !important;
 }
 #text_supIz
 {
-	font-size:87% !important;
+	
 	float:left !important;
 }
 .input_form
@@ -38,4 +38,26 @@
 .div_static
 {
 	width:200px !important;
+}
+#bien_barra
+{
+	height: 30px !important;
+}
+.mini_txt
+{
+	font-size=8px !important;
+}
+.txt_titulo
+{
+	
+	font-size=14px !important;
+	height:20px !important;
+	width:80% !important;
+	border:1px #676767 solid;
+	padding:8px;
+	color:#575757;
+	text-align:center;
+	font-weight:bold;
+	margin: 0 auto;
+	border-radius: 5px;
 }

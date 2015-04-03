@@ -121,7 +121,7 @@ function opcMarca(id_emp)
 function checkDistanciaMarca(id_emp)
 {
 	$("#output").load(path_query, 
-			{tipo:10, lon:MK_LON, lat:MK_LON, accu:MK_ACCU,id_emp:id_emp} 
+			{tipo:10, lon:MK_LON, lat:MK_LAT, accu:MK_ACCU,id_emp:id_emp} 
 				,function(){				
 					$.mobile.loading( 'hide');		
 					
@@ -138,7 +138,7 @@ function marcar(tipo,id_emp)
 				html: ""
 			});
 		$("#output").load(path_query, 
-			{tipo:9, es:tipo, id_emp:id_emp} 
+			{tipo:9, es:tipo, id_emp:id_emp,lon:MK_LON, lat:MK_LAT, accu:MK_ACCU} 
 				,function(){				
 					$.mobile.loading( 'hide');		
 					openPopstatic("Marca realizada");
