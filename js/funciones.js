@@ -142,7 +142,7 @@ function marcar(tipo,id_emp)
 			{tipo:9, es:tipo, id_emp:id_emp,lon:MK_LON, lat:MK_LAT, accu:MK_ACCU} 
 				,function(){				
 					$.mobile.loading( 'hide');		
-					openPopstatic("Marca realizada");
+					
 					
 				}
 			);
@@ -323,4 +323,60 @@ function ayuda()
 					
 				}
 			);
+}
+function sendLocation()
+{
+		$("#cont_static").load(path_query, 
+			{tipo:13} 
+				,function(){				
+					$('#cont_static').trigger('create');
+					$("#myPopup_static").popup("open");
+					//$.mobile.loading( 'hide');		
+					
+					
+					
+				}
+			);
+}
+function sendLocat(id_empleador,trab)
+{
+		$.mobile.loading( 'show', {
+				text: 'Enviando',
+				textVisible: true,
+				theme: 'a',
+				html: ""
+			});
+	
+		navigator.geolocation.getCurrentPosition (function (pos)
+		{
+			var lat = pos.coords.latitude;
+  		var lng = pos.coords.longitude;
+  		var accu=pos.coords.accuracy.toFixed(2);
+  		
+  		MK_LON=lng;
+  		MK_LAT=lat;
+  		MK_ACCU=accu;
+  		
+  		$("#output").load(path_query, 
+			{tipo:14, id_emp:id_empleador,lat:MK_LAT, lon:MK_LON, trab:trab} 
+				,function(){	
+				
+					$.mobile.loading( 'hide');		
+					setTimeout("openPopstatic('<div class=div_static>Ubicaci&oacute;n Enviada</div>');",2000);
+					
+					
+				}
+			);
+			
+		},errorGPS,{timeout:6000});	
+}
+function offline()
+{
+	$("#contenido_sesion").html("<br><br>Se encuentra sin conecci&oacute;n a internet, Por favor verifiquelo e intente nuevamente.<br><br>Necesitas ayuda? contactate con nosotros enviando un mail a contacto@architeq.cl");
+	$('#contenido_sesion').trigger('create');
+	openPopstatic('<div class=div_static>Se encuentra sin conecci&oacute;n a internet, Por favor verifiquelo e intente nuevamente.</div>');
+}
+function online()
+{
+	getEstadoUsuario();
 }
