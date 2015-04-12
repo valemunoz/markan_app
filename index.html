@@ -11,10 +11,16 @@
 				<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
 	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/style.mobile.css" />
 	<script src="js/jquery-1.11.1.min.js"></script>
+
+	
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
 	<script src="js/funciones.js"></script>
    			<script src="cordova.js"></script>
+   			
+	<script type="text/javascript" src="http://www.chilemap.cl/OpenLayers/OpenLayers.js"></script>     			
+	<script src="js/funciones_api_mobile_basica.js"></script>
    			<!--script src="js/funciones.js"></script--> 
    			
    			<script>
@@ -59,6 +65,7 @@
 				    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
 						<div id=cont_static></div>
 					</div>
+					
 					<div id="menu_sesion">
 					</div>
 					<div id="contenido_sesion">
@@ -82,43 +89,7 @@
     	
     	  
  </div>
-<div data-role="page" id="mod_sesion" data-theme="a">
-
-   	<div data-role="header" >
-	   			 <img id=back_boton src="img/back.png" class="ui-btn-left" onclick="volver();">
-      		
-      		
-   		</div>    		
-   	  <div data-role="content" id="contenido" >
-   	  	
-    	  	<div class="ui-bar ui-bar-a" id=barra_sup style="text-align:center;">
-					 Inicio de Sesi&oacute;n<div></div>
-					</div>
-					<div data-role="popup" id="myPopup_reg">
-							<p>This is a completely basic popup, no options set.						</p>
-					</div>
-					
-					<p id="form_login">
-						
-						
-						<input type="text" class=input_form name="mail" id="mail" value="" placeholder="Usuario">
-						<input type="password" class=input_form name="clave" id="clave"  autocomplete="off" placeholder="Contrase&ntilde;a">						
-						<div id="msg_error_reg" class="msg_error"></div>						
-						<input type="button" onclick="loadInicio();" value="Iniciar" >
-						<p>
-							<a href="#mod_recupera" data-rel="dialog" data-transition="pop" ><input type="button" value="Olvido Contrase&ntilde;a?"></a>
-						</p>
-						
-					
-						<!--input type="button" onclick="cambiar('mod_registro');" value="Registrarme"-->
-					
-					</p>          
-			
-    	    
-					
-    	</div>
-    	  
- 		</div> 		
+		
 <div data-role="page" id="mod_info" data-theme="a">
 
 	<div data-role="header" >
@@ -127,6 +98,19 @@
       		
    		</div>   		
    	  <div data-role="content" id="contenido_info" >
+   	  	
+    	  	
+    	</div>
+    	  
+ 		</div>  
+<div data-role="page" id="mod_mapa" data-theme="a">
+
+	<div data-role="header" >
+	   			 <img id=back_boton src="img/left.png" class="ui-btn-left" onclick="volver();">
+      		<h3><img src="img/markan.jpg" width="40%"></h3>
+      		
+   		</div>   		
+   	  <div data-role="content" id="contenido_map" >
    	  	
     	  	
     	</div>

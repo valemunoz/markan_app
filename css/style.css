@@ -7,8 +7,9 @@
 }
 #bienv_home
 {
-	margin-top:50%;
+	margin-top:10%;
 	font-size:100%;
+	
 }
 #text_sup
 {
@@ -73,4 +74,14 @@
 	font-weight:bold;
 	margin: 0 auto;
 	border-radius: 5px;
+}
+
+#map
+{
+	margin: 0 auto;
+	width:95% !important;	
+	height:65% !important;
+	position:absolute;
+	
+	
 }

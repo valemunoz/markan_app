@@ -1,9 +1,13 @@
 var path_query="http://obvii.net/obvii/markan/query.php";
 var MK_LON=0;
 var MK_LAT=0;
-var MK_ACUU=0;
+var MK_ACCU=0;
 var MK_MAIL="";
 var MK_MENU=0;
+var PAIS_LON=-70.656235;
+var PAIS_LAT=-33.458943;
+var PAIS_ZOOM=10;
+var jsLoadedMapa=false;
 function openPopstatic(contenido)
 {
 	$("#cont_static").html(contenido);
@@ -326,12 +330,18 @@ function ayuda()
 }
 function sendLocation()
 {
+	$.mobile.loading( 'show', {
+				text: 'Cargando',
+				textVisible: true,
+				theme: 'a',
+				html: ""
+			});
 		$("#cont_static").load(path_query, 
 			{tipo:13} 
 				,function(){				
 					$('#cont_static').trigger('create');
 					$("#myPopup_static").popup("open");
-					//$.mobile.loading( 'hide');		
+					$.mobile.loading( 'hide');		
 					
 					
 					
@@ -379,4 +389,51 @@ function offline()
 function online()
 {
 	getEstadoUsuario();
+}
+function loadMapa()
+{
+	
+		if(1==1)//jsLoadedMapa)
+	{
+		$.mobile.loading( 'show', {
+				text: 'Cargando Mapa',
+				textVisible: true,
+				theme: 'a',
+				html: ""
+			});
+			$("#contenido_sesion").load(path_query, 
+			{tipo:15} 
+				,function(){	
+					
+					$.mobile.loading( 'hide');					
+					//$.mobile.changePage('#mod_mapa');
+					$('#contenido_sesion').trigger('create');
+					init(PAIS_LON,PAIS_LAT,PAIS_ZOOM);
+					$("#myPopup_static").popup("close");
+					
+		navigator.geolocation.getCurrentPosition (function (pos)
+		{
+			var lat = pos.coords.latitude;
+  		var lng = pos.coords.longitude;
+  		var accu=pos.coords.accuracy.toFixed(2);
+  		
+  		MK_LON=lng;
+  		MK_LAT=lat;
+  		MK_ACCU=accu;
+  		moverCentro(MK_LAT,MK_LON,17);
+			addMarcadores(MK_LON,MK_LAT,"Ubicacion Actual","img/marker.png",30,30);
+		
+			
+		},errorGPS,{timeout:6000});						
+					
+				}
+			);
+		}else
+			{
+				mensaje("Ocurrio un problema y no podemos cargar mapas en este momento. Por favor intentelo nuevamente en unos minutos mas","ERROR","myPopup");
+			}
+}
+function moveOn()
+{
+	
 }
