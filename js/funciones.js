@@ -262,10 +262,16 @@ function errorGPS()
 }
 function salir()
 {
+	
 	$("#output").load(path_query, 
 			{tipo:11} 
 				,function(){				
 					window.location="index.html";
+					$("#men_pan").hide();
+			$("#men_pan2").hide();
+			$("#men_pan3").hide();
+			$("#men_pan4").hide();
+			
 					
 				}
 			);
