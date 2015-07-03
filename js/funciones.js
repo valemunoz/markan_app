@@ -7,11 +7,18 @@ var MK_MENU=0;
 var PAIS_LON=-70.656235;
 var PAIS_LAT=-33.458943;
 var PAIS_ZOOM=10;
+var MK_TIEMPO_POP=5000;
 var jsLoadedMapa=false;
 function openPopstatic(contenido)
 {
 	$("#cont_static").html(contenido);
 	$("#myPopup_static").popup("open");
+	
+	setTimeout(function() {
+
+       $("#myPopup_static").popup("close");
+
+    }, MK_TIEMPO_POP);
 }
 function deviceListo()
 {
