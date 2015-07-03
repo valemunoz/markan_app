@@ -9,16 +9,19 @@ var PAIS_LAT=-33.458943;
 var PAIS_ZOOM=10;
 var MK_TIEMPO_POP=5000;
 var jsLoadedMapa=false;
-function openPopstatic(contenido)
+function openPopstatic(contenido,MK_TIEMPO_POP)
 {
+	
 	$("#cont_static").html(contenido);
 	$("#myPopup_static").popup("open");
-	
-	setTimeout(function() {
+	if(MK_TIEMPO_POP>100)
+	{
+		setTimeout(function() {
 
        $("#myPopup_static").popup("close");
 
     }, MK_TIEMPO_POP);
+  }
 }
 function deviceListo()
 {
@@ -28,7 +31,7 @@ function deviceListo()
 }
 function errorPos()
 {
-	 openPopstatic("Error en la captura de coordenadas. Por favor revise su GPS");
+	 openPopstatic("Error en la captura de coordenadas. Por favor revise su GPS",5000);
 	 
 }
 function inicio()
@@ -58,7 +61,7 @@ function inicio()
 			},initSesion,{timeout:6000});	
 	}else
 	{
-		openPopstatic("Debe ingresar un identificador valido.");		
+		openPopstatic("Debe ingresar un identificador valido.",5000);		
 	}
 }
 function initSesion()
@@ -264,7 +267,7 @@ function loadSesion()
 }
 function errorGPS()
 {
-	openPopstatic('<div class=div_static>Ocurrio un error al obtener coordenas. Por favor intentelo nuevamente</div>');
+	openPopstatic('<div class=div_static>Ocurrio un error al obtener coordenas. Por favor intentelo nuevamente</div>',5000);
 	$.mobile.loading( 'hide');		
 }
 function salir()
@@ -286,7 +289,7 @@ function salir()
 function loadEnvioHistorial(tipo)
 {
 	$("#mypanel2").panel( "close" );
-	openPopstatic('<div class=div_static>Correo Electronico<br><input type="text" class=input_form id=mail_correo name=mail_correo value="'+MK_MAIL+'"><br><input type="button" onclick="historial('+tipo+');" class="bottom_coment" value="Enviar"></div>');
+	openPopstatic('<div class=div_static>Correo Electronico<br><input type="text" class=input_form id=mail_correo name=mail_correo value="'+MK_MAIL+'"><br><input type="button" onclick="historial('+tipo+');" class="bottom_coment" value="Enviar"></div>',0);
 	
 	
 }
@@ -311,7 +314,7 @@ function sendHistorial(tipo)
 			{tipo:12, opc:tipo, mail:mail} 
 				,function(){				
 					$.mobile.loading( 'hide');		
-					openPopstatic('<div class=div_static>Historial enviado</div>');				
+					openPopstatic('<div class=div_static>Historial enviado</div>',5000);				
 					
 				}
 			);
@@ -385,7 +388,7 @@ function sendLocat(id_empleador,trab)
 				,function(){	
 				
 					$.mobile.loading( 'hide');		
-					setTimeout("openPopstatic('<div class=div_static>Ubicaci&oacute;n Enviada</div>');",2000);
+					setTimeout("openPopstatic('<div class=div_static>Ubicaci&oacute;n Enviada</div>',5000);",2000);
 					
 					
 				}
@@ -397,7 +400,7 @@ function offline()
 {
 	$("#contenido_sesion").html("<br><br>Se encuentra sin conecci&oacute;n a internet, Por favor verifiquelo e intente nuevamente.<br><br>Necesitas ayuda? contactate con nosotros enviando un mail a contacto@architeq.cl");
 	$('#contenido_sesion').trigger('create');
-	openPopstatic('<div class=div_static>Se encuentra sin conecci&oacute;n a internet, Por favor verifiquelo e intente nuevamente.</div>');
+	openPopstatic('<div class=div_static>Se encuentra sin conecci&oacute;n a internet, Por favor verifiquelo e intente nuevamente.</div>',5000);
 }
 function online()
 {
